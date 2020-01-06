@@ -32,10 +32,13 @@
                 birth = #{birth},
             </if>
             <if test="phone">
-                phone = #{phone}
+                phone = #{phone},
+            </if>
+            <if test="address">
+                address = #{address}
             </if>
         </set>
-        where id=#{id}
+        where studyid = #{studyid}
     </update>
 
     <delete id="deleteStu" parameterType="Student">

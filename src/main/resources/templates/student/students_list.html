@@ -42,21 +42,25 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr th:each="stu:${stus}">
-                                    <td th:text="${stu.getStudyid()}"></td>
-                                    <td th:text="${stu.getName()}"></td>
-                                    <td th:text="${stu.getSex()==0?'女':'男'}"></td>
-                                    <td th:text="${stu.getAge()}"></td>
-                                    <td th:text="${stu.getBirth()}"></td>
-                                    <td th:text="${stu.getPhone()}"></td>
-                                    <td th:text="${stu.getAddress()}"></td>
-                                    <td>
-                                        <div class="btn-group">
-                                            <button class="btn btn-group-sm btn-primary" data-toggle="modal" data-target="#myModal">编辑</button>
-                                            <a class="btn btn-group-sm btn-danger" th:href=" @{/deleteStu/} + ${stu.getStudyid()} ">删除</a>
-                                        </div>
-                                    </td>
-                                </tr>
+                                <form action="/updateStu" method="post">
+                                    <tr th:each="stu:${stus}">
+                                        <td th:text="${stu.getStudyid()}"></td>
+                                        <td th:text="${stu.getName()}"></td>
+                                        <td th:text="${stu.getSex()==0?'女':'男'}"></td>
+                                        <td th:text="${stu.getAge()}"></td>
+                                        <td th:text="${stu.getBirth()}"></td>
+                                        <td th:text="${stu.getPhone()}"></td>
+                                        <td th:text="${stu.getAddress()}"></td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <a class="btn btn-group-sm btn-primary"
+                                                   th:href="@{/updateStu/} + ${stu.getStudyid()}">编辑</a>
+                                                <a class="btn btn-group-sm btn-danger"
+                                                   th:href="@{/deleteStu/} + ${stu.getStudyid()}">删除</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </form>
                                 </tbody>
                             </table>
                         </div>

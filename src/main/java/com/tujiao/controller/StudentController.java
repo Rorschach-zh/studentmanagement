@@ -22,17 +22,28 @@ public class StudentController {
         return "student/students_list";
     }
 
-    @RequestMapping("/addstu")
-    public String addstu(){
-        return "student/addstu";
-    }
-
     @PostMapping("/stu")
-    public String addStu(Student student){
-        System.out.println(student);
+    public String addStu(Student student) {
+//        System.out.println(student);
         stuMapper.addStu(student);
         return "redirect:/stus";
     }
+
+    //跳转到修改页面 (链结形式-getmapping)
+    @GetMapping("/updateStu/{studyid}")
+    public String addstu(@PathVariable("studyid") String studyid, Model model) {
+//        查出原来的数据
+        Student student = stuMapper.queryStuById(studyid);
+        model.addAttribute("stu", student);
+        return "student/student_update";
+    }
+
+    @PostMapping("/updateStu")
+    public String updateStu(Student student) {
+        stuMapper.updateStu(student);
+        return "redirect:/stus";
+    }
+
 
     @GetMapping("/deleteStu/{studyid}")
     public String deleteStu(@PathVariable("studyid") String studyid) {
