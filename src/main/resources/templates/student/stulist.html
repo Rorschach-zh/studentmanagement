@@ -23,7 +23,8 @@
                 <div class="card">
                     <div class="card-header">
                         <h4>学生信息管理</h4>
-                        <button class="btn-primary pull-right"  data-toggle="modal" data-target="#myModal">添加学生</button>
+                        <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal">添加学生
+                        </button>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -106,7 +107,8 @@
                 </div>
                 <div class="form-group">
                     <label th:class="control-label">年龄</label>
-                    <input type="int" name="age" th:class="form-control" pattern="/^(?:[1-9][0-9]?|1[01][0-9]|120)$/" placeholder="年龄（1-120的整数）" class="form-control">
+                    <input type="int" name="age" th:class="form-control" placeholder="年龄（1-120的整数）"
+                           class="form-control">
                 </div>
                 <div class="form-group">
                     <label th:class="control-label">出生日期</label>
@@ -114,7 +116,7 @@
                 </div>
                 <div class="form-group">
                     <label th:class="control-label">联系电话</label>
-                    <input type="tel" name="phone" th:class="form-control" pattern="^((13[0-9])|(14[0-9])|(15[0-9])|(17[0-9])|(18[0-9]))\d{8}$" placeholder="联系电话" class="form-control">
+                    <input type="tel" name="phone" th:class="form-control" placeholder="联系电话" class="form-control">
                 </div>
 
                 <div class="form-group">

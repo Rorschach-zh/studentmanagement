@@ -8,7 +8,7 @@
         select * from mybatis.student
     </select>
     <select id="queryStuById" resultType="Student">
-        select * from mybatis.student where id = #{id}
+        select * from mybatis.student where studyid = #{studyid}
     </select>
     <insert id="addStu" parameterType="map">
         insert into mybatis.student(studyid,name,sex,age,birth,phone,address) values (#{studyid},#{name},#{sex},#{age},#{birth},#{phone},#{address})
@@ -39,7 +39,7 @@
     </update>
 
     <delete id="deleteStu" parameterType="Student">
-        delete from mybatis.student where studyid=#{id}
+        delete from mybatis.student where studyid=#{studyid}
     </delete>
 
 </mapper>

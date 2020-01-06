@@ -16,8 +16,6 @@ public class LoginController {
     @Autowired
     private UserMapper userMapper;
 
-
-
     @RequestMapping("/login")
     public String login(HttpSession session){
         session.invalidate();
@@ -26,7 +24,6 @@ public class LoginController {
     }
 
     @RequestMapping("/loginCheck")
-//    @ResponseBody
     public String loginCheck(
             @RequestParam("username") String username,
             @RequestParam("password") String password,
