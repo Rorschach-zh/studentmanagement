@@ -9,13 +9,23 @@
         <a href="index.html"><img src="images/logo-sidebar.png" title="LightYear" alt="LightYear" /></a>
     </div>
     <div class="lyear-layout-sidebar-scroll">
-
         <nav class="sidebar-main">
             <ul class="nav nav-drawer">
                 <li th:class="${active=='main.html'?'active':'nav-item'}">
                     <a th:href="@{/}"><i class="mdi mdi-home"></i>首页</a></li>
                 <li th:class="${active=='stulist.html'?'active':'nav-item'}">
                     <a th:href="@{/stus}"><i class="mdi mdi-account"></i>学生管理</a></li>
+                <!--                <li th:class="${active=='personal_info.html'?'active':'nav-item'}">-->
+                <!--                    <a th:href="@{/personal_info}"><i class="mdi mdi-settings"></i>设置</a></li>-->
+                <li class="nav-item nav-item-has-subnav">
+                    <a href="javascript:void(0)"><i class="mdi mdi-settings"></i>设置</a>
+                    <ul class="nav nav-subnav">
+                        <li th:class="${active=='personal_info.html'?'active':'nav-item'}">
+                            <a th:href="@{/personal_info}">管理员信息查看</a>
+                        </li>
+                        <li><a href="#!">管理员密码修改</a></li>
+                    </ul>
+                </li>
             </ul>
         </nav>
     </div>
@@ -184,6 +194,7 @@
     </nav>
 </header>
 <!--END 头部信息-->
+
 
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>

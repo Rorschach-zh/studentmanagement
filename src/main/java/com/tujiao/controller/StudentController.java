@@ -7,9 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 public class StudentController {
@@ -21,7 +19,7 @@ public class StudentController {
     public String GetUser(Model model){
         List<Student> stus = stuMapper.queryStuList();
         model.addAttribute("stus",stus);
-        return "student/stulist";
+        return "student/students_list";
     }
 
     @RequestMapping("/addstu")
@@ -32,7 +30,6 @@ public class StudentController {
     @PostMapping("/stu")
     public String addStu(Student student){
         System.out.println(student);
-        Map<String,Object> map = new HashMap<>();
         stuMapper.addStu(student);
         return "redirect:/stus";
     }
