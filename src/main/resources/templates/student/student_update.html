@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+    <title>学生信息管理</title>
+    <meta name="description" content="一个基于Spring Boot的简单学生信息管理系统">
+    <meta name="author" content="tujiao">
+
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/materialdesignicons.min.css}" rel="stylesheet">
+    <link th:href="@{/css/style.min.css}" rel="stylesheet">
+</head>
+
+<body>
+<div th:insert="~{commons/commons::sidebar(active='stulist.html')}"/>
+<div th:insert="~{commons/commons::header}"/>
+
+<main class="lyear-layout-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="col-md-5">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="modal-title">学生信息管理-修改学生信息</h4>
+                        </div>
+                        <div class="card-body">
+
+                            <form method="post" th:action="@{/updateStu}">
+                                <div class="form-group">
+
+
+                                    <label th:class="control-label">学号</label>
+                                    <input th:value="${stu.studyid}" type="text" name="studyid" th:class="form-control"
+                                           placeholder="学号"
+                                           class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label th:class="control-label">姓名</label>
+                                    <input th:value="${stu.name}" type="text" name="name" th:class="form-control"
+                                           placeholder="姓名"
+                                           class="form-control"/>
+                                </div>
+                                <div class="form-group">
+                                    <label th:class="control-label">性别</label>
+                                    <div class="example-box">
+                                        <label class="lyear-radio radio-inline radio-primary">
+                                            <input th:checked="${stu.sex==1}" type="radio" name="sex" value="1">
+                                            <span>男</span>
+                                        </label>
+                                        <label class="lyear-radio radio-inline radio-primary">
+                                            <input th:checked="${stu.sex==0}" type="radio" name="sex" value="0">
+                                            <span>女</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label th:class="control-label">年龄</label>
+                                    <input th:value="${stu.age}" type="int" name="age" th:class="form-control"
+                                           placeholder="年龄（1-120的整数）"
+                                           class="form-control"/>
+                                </div>
+                                <div class="form-group">
+                                    <label th:class="control-label">出生日期</label>
+                                    <input th:value="${stu.birth}" type="date" name="birth" th:class="form-control"
+                                           class="form-control"/>
+                                </div>
+                                <div class="form-group">
+                                    <label th:class="control-label">联系电话</label>
+                                    <input th:value="${stu.phone}" type="tel" name="phone" th:class="form-control"
+                                           placeholder="联系电话"
+                                           class="form-control"/>
+                                </div>
+
+                                <div class="form-group">
+                                    <label th:class="control-label">家庭地址</label>
+                                    <input th:value="${stu.address}" type="text" name="address" th:class="form-control"
+                                           placeholder="详细地址"
+                                           class="form-control"
+                                           required/>
+                                </div>
+                                <hr>
+                                <div class="form-group text-center">
+                                    <a class="btn btn-secondary" th:href="@{/stus}">取消</a>
+                                    <button class="btn btn-primary" type="submit">提交</button>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/perfect-scrollbar.min.js"></script>
+<script type="text/javascript" src="/js/main.min.js"></script>
+</body>
+</html>
