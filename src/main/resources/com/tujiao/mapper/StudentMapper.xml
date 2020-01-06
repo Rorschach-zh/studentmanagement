@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tujiao.mapper.StudentMapper">
+
+    <select id="queryStuList" resultType="Student">
+        select * from mybatis.student
+    </select>
+    <select id="queryStuById" resultType="Student">
+        select * from mybatis.student where id = #{id}
+    </select>
+    <insert id="addStu" parameterType="map">
+        insert into mybatis.student(studyid,name,sex,age,birth,phone,address) values (#{studyid},#{name},#{sex},#{age},#{birth},#{phone},#{address})
+    </insert>
+    <update id="updateStu" parameterType="Student">
+        update mybatis.student
+        <set>
+            <if test="studyid">
+                studyid = #{studyid},
+            </if>
+            <if test="name">
+                name = #{name},
+            </if>
+            <if test="sex">
+                sex = #{sex},
+            </if>
+            <if test="age">
+                age = #{age},
+            </if>
+            <if test="birth">
+                birth = #{birth},
+            </if>
+            <if test="phone">
+                phone = #{phone}
+            </if>
+        </set>
+        where id=#{id}
+    </update>
+
+    <delete id="deleteStu" parameterType="Student">
+        delete from mybatis.student where studyid=#{id}
+    </delete>
+
+</mapper>
