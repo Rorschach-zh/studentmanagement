@@ -37,6 +37,7 @@
                                     <th>年龄</th>
                                     <th>生日</th>
                                     <th>联系电话</th>
+                                    <th>家庭地址</th>
                                     <th>操作</th>
                                 </tr>
                                 </thead>
@@ -48,6 +49,7 @@
                                     <td th:text="${stu.getAge()}"></td>
                                     <td th:text="${stu.getBirth()}"></td>
                                     <td th:text="${stu.getPhone()}"></td>
+                                    <td th:text="${stu.getAddress()}"></td>
                                     <td>
                                         <div class="btn-group">
                                             <button class="btn btn-group-sm btn-primary" data-toggle="modal" data-target="#myModal">编辑</button>
