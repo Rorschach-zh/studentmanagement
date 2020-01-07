@@ -7,6 +7,11 @@
     <select id="queryStuList" resultType="Student">
         select * from mybatis.student
     </select>
+
+    <select id="queryStuByLimit" resultType="Student" parameterType="map">
+        select * from mybatis.student  limit #{startPage},#{pageSize}
+    </select>
+
     <select id="queryStuById" resultType="Student">
         select * from mybatis.student where studyid = #{studyid}
     </select>

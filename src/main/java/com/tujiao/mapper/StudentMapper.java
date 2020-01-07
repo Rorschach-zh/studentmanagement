@@ -5,12 +5,15 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 @Repository
 public interface StudentMapper {
 
     List<Student> queryStuList();
+
+    List<Student> queryStuByLimit(int startpage, int pageSize);
 
     Student queryStuById(String studyid);
 
