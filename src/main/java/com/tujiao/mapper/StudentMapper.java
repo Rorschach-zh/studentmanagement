@@ -22,4 +22,6 @@ public interface StudentMapper {
     int updateStu(Student stu);
 
     int deleteStu(String studyid);
+
+    int querySize();
 }

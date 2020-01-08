@@ -50,4 +50,8 @@
         delete from mybatis.student where studyid=#{studyid}
     </delete>
 
+    <select id="querySize" resultType="int">
+        select count(*) from mybatis.student
+    </select>
+
 </mapper>
