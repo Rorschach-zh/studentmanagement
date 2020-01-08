@@ -6,6 +6,7 @@ import com.tujiao.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
@@ -19,10 +20,24 @@ public class StudentController {
     @Autowired
     private StudentService stuService;
 
+//    @RequestMapping("/stus")
+//    public String GetUser(Model model) {
+//        List<Student> stus = stuService.queryStuList();
+//        model.addAttribute("stus", stus);
+//        return "student/students_list";
+//    }
+
+    private static final int PAGESIZE = 9;
+
     @RequestMapping("/stus")
-    public String GetUser(Model model) {
-        List<Student> stus = stuService.queryStuList();
-        model.addAttribute("stus", stus);
+    public String GetUserLimit(Model model, @RequestParam(defaultValue = "1") Integer page) {
+        List<Student> students = stuService.queryStuByLimit((page - 1) * PAGESIZE, PAGESIZE);
+        int pages = (stuService.querySize() - 1) / PAGESIZE + 1;
+        //添加数据到页面
+        model.addAttribute("stus", students);
+        model.addAttribute("pages", pages);
+        model.addAttribute("page", page);
+        //跳转到测试页面
         return "student/students_list";
     }
 
@@ -65,4 +80,5 @@ public class StudentController {
         stuService.deleteStu(studyid);
         return "redirect:/stus";
     }
+
 }

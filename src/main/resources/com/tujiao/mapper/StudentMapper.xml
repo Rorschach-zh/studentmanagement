@@ -15,7 +15,7 @@
     <select id="queryStuById" resultType="Student">
         select * from mybatis.student where studyid = #{studyid}
     </select>
-    <insert id="addStu" parameterType="map">
+    <insert id="addStu" parameterType="Student">
         insert into mybatis.student(studyid,name,sex,age,birth,phone,address) values (#{studyid},#{name},#{sex},#{age},#{birth},#{phone},#{address})
     </insert>
     <update id="updateStu" parameterType="Student">

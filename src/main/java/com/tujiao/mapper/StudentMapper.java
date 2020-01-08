@@ -13,7 +13,7 @@ public interface StudentMapper {
 
     List<Student> queryStuList();
 
-    List<Student> queryStuByLimit(int startpage, int pageSize);
+    List<Student> queryStuByLimit(int startPage, int pageSize);
 
     Student queryStuById(String studyid);
 

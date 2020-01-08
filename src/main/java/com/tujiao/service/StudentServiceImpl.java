@@ -17,7 +17,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public int querySize() {
-        return querySize();
+        return studentMapper.querySize();
     }
 
     @Override

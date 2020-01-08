@@ -66,19 +66,34 @@
                             </table>
                         </div>
                         <nav class="text-right">
-                            <ul class="pagination no-border">
-                                <li class="disabled">
+                            <ul class="pagination">
+
+                                <!--上一页-->
+                                <li th:if="${page==1}" class="disabled">
                                     <a href="#!">
                                         <span><i class="mdi mdi-chevron-left"></i></span>
                                     </a>
                                 </li>
-                                <li class="active"><a href="#">1</a></li>
-                                <li><a href="#!">2</a></li>
-                                <li><a href="#!">3</a></li>
-                                <li><a href="#!">4</a></li>
-                                <li><a href="#!">5</a></li>
-                                <li>
+                                <li th:if="${page!=1}">
+                                    <a th:href="@{/stus(page=${page-1})}">
+                                        <span><i class="mdi mdi-chevron-left"></i></span>
+                                    </a>
+                                </li>
+                                <!--数字部分-->
+                                <li th:class="${i==page?'active':''}"
+                                    th:each="i:${#numbers.sequence(1,pages)}"
+                                >
+                                    <a th:href="@{/stus(page=${i})}">[[${i}]]</a>
+                                </li>
+
+                                <!--下一页-->
+                                <li th:if="${page==pages}" class="disabled">
                                     <a href="#!">
+                                        <span><i class="mdi mdi-chevron-right"></i></span>
+                                    </a>
+                                </li>
+                                <li th:if="${page!=pages}">
+                                    <a th:href="@{/stus(page=${page+1})}">
                                         <span><i class="mdi mdi-chevron-right"></i></span>
                                     </a>
                                 </li>
