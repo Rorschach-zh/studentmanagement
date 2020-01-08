@@ -2,11 +2,10 @@ package com.tujiao.service;
 
 import com.tujiao.mapper.StudentMapper;
 import com.tujiao.pojo.Student;
+import com.tujiao.utils.AgeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 
@@ -39,11 +38,8 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public boolean addStu(Student student) {
         if (studentMapper.queryStuById(student.getStudyid()) == null) {
-            SimpleDateFormat sf = new SimpleDateFormat("yyyy");
-            int age = Integer.parseInt(sf.format(new Date())) -
-                    Integer.parseInt(sf.format(student.getBirth()));
+            int age = AgeUtils.getAge(student.getBirth());
             student.setAge(age);
-//            System.out.println(age);
             studentMapper.addStu(student);
             return true;
         } else
@@ -51,8 +47,10 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public int updateStu(Student stu) {
-        return studentMapper.updateStu(stu);
+    public int updateStu(Student student) {
+        int age = AgeUtils.getAge(student.getBirth());
+        student.setAge(age);
+        return studentMapper.updateStu(student);
     }
 
     @Override
